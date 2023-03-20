@@ -13,7 +13,7 @@ const Main = () => {
     useEffect(() => {
 		getProducts();
 		checkUser(updateUser);
-		return () => (didCancel = true);
+		return () => didCancel = true;
 	}, []);
 	
     const getProducts = async () => {
@@ -28,7 +28,7 @@ const Main = () => {
 	
     const deleteItem = async (id) => {
 		try {
-			const products = state.products.filter((p) => p.id !== id); //everything except the to be deleted product optimistic delete
+			const products = state.products.filter(p => p.id !== id); //everything except the to be deleted product optimistic delete
 			setState({ ...state, products });
 			await API.del("ecommerceapi", "/products", { body: { id } }); // id is short for id: id
 			console.log("successfully deleted item");
@@ -44,7 +44,7 @@ const Main = () => {
 				itemLayout="horizontal"
 				dataSource={state.products}
 				loading={state.loading}
-				renderItem={(item) => (
+				renderItem={item => (
 					<List.Item
 						actions={user.isAuthorized
 								? [
