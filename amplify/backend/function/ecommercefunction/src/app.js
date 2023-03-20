@@ -15,6 +15,26 @@ See the License for the specific language governing permissions and limitations 
 	STORAGE_PRODUCTTABLE_NAME
 	STORAGE_PRODUCTTABLE_STREAMARN
 Amplify Params - DO NOT EDIT */
+const AWS = require('aws-sdk');
+const { v4: uuid } = require('uuid');
+
+/* Cognito SDK */
+const cognito = new
+AWS.CognitoIdentityServiceProvider({
+  apiVersion: '2016-04-18'
+})
+
+/* Cognito User Pool ID
+*  This User Pool ID variable will be given to you by the CLI output after
+   adding the category
+*  This will also be available in the file itself, commented out at the top
+*/
+var userpoolId = process.env.AUTH_ECOMMERCEAPP1122DA288_USERPOOLID
+
+// DynamoDB configuration
+const region = process.env.REGION
+const ddb_table_name = process.env.STORAGE_PRODUCTTABLE_NAME
+const docClient = new AWS.DynamoDB.DocumentClient({region})
 
 const express = require('express')
 const bodyParser = require('body-parser')
