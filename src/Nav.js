@@ -27,7 +27,7 @@ const Nav = ({ current }) => {
 		{
 			label: <Link to={`/profile`}>Profile</Link>,
 			key: "profile",
-			icon: <UserOutlined />, /*<ProfileOutlined />*/
+			icon: <UserOutlined />,
 		},
 		user.isAuthorized && ({
 			label: <Link to={`/admin`}>Admin</Link>,

@@ -10,12 +10,12 @@ const Profile = ({ signOut }) => {
 		signUpAttributes={[
 			'email',
 			'phone_number',
-		  ]}>
-      {() => (
+		]}>
+      	{() => (
         <main>
           <button onClick={signOut}>Sign out</button>
         </main>
-      )}
+      	)}
     </Authenticator>
 		// <div style={containerStyle}>
 		// 	<button onClick={signOut}>Sign out</button>
