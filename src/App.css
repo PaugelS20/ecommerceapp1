@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+/* [data-amplify-authenticator][data-variation=popover] {
+  overflow-y: auto;
+  width: var(--amplify-components-authenticator-modal-width);
+  height: var(--amplify-components-authenticator-modal-height);
+  background-color: var(--amplify-components-authenticator-modal-background-color);
+  position: fixed;
+  top: var(--amplify-components-authenticator-modal-top);
+  left: var(--amplify-components-authenticator-modal-left);
+  /* Having a z-index at least "wins" by default */
+  /*z-index: 1;
+} */
