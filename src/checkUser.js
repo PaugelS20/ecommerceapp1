@@ -18,7 +18,7 @@ const checkUser = async (updateUser) => {
 		});
 	} 
     
-    catch (error) {
+    catch (err) {
         console.error(err);
         updateUser({});
     }
