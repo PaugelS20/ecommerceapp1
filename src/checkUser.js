@@ -24,5 +24,3 @@ const checkUser = async (updateUser) => {
     }
 };
 export default checkUser;
-
-
