@@ -1,24 +1,34 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Input, Button } from "antd";
-
+import { useAuthenticator } from "@aws-amplify/ui-react";
 import { API } from "aws-amplify";
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { RequireAuth } from "@aws-amplify/ui-react";
 
 const initialState = {
 	name: "",
 	price: "",
 };
 
+// const Admin = () => {};
+
+const containerStyle = { width: 400, margin: "20px auto" };
+const inputStyle = { marginTop: 10 };
+const buttonStyle = { marginTop: 10 };
+
 const Admin = () => {
+	const { route } = useAuthenticator((context) => [context.route]);
+
 	const [itemInfo, updateItemInfo] = useState(initialState);
+
 	const updateForm = (e) => {
 		const formData = {
 			...itemInfo,
 			[e.target.name]: e.target.value,
 		};
 		updateItemInfo(formData);
-	}
+	};
+
 	const addItem = async () => {
 		try {
 			const data = {
@@ -29,7 +39,8 @@ const Admin = () => {
 		} catch (err) {
 			console.error("error adding item...");
 		}
-	}
+	};
+
 	return (
 		<div style={containerStyle}>
 			<Input
@@ -51,10 +62,5 @@ const Admin = () => {
 			</Button>
 		</div>
 	);
-}
-
-const containerStyle = { width: 400, margin: "20px auto" };
-const inputStyle = { marginTop: 10 };
-const buttonStyle = { marginTop: 10 };
-
-export default withAuthenticator(Admin);
+};
+export default Admin;
