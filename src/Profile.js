@@ -1,43 +1,25 @@
 import React from "react";
 import "@aws-amplify/ui-react/styles.css";
-import { withAuthenticator } from "@aws-amplify/ui-react";
-import { Authenticator } from '@aws-amplify/ui-react';
+import { Authenticator } from "@aws-amplify/ui-react";
 
-
-const Profile = ({ signOut }) => {
-	return (		
-		<Authenticator
-		signUpAttributes={[
-			'email',
-			'phone_number',
-		]}>
-      	{() => (
-        <main>
-          <button onClick={signOut}>Sign out</button>
-        </main>
-      	)}
-    </Authenticator>
-		// <div style={containerStyle}>
-		// 	<button onClick={signOut}>Sign out</button>
-		// </div>
+const Profile = () => {
+	return (
+		<Authenticator>
+			{({ signOut, user }) => (
+				<main>
+					<h1>Profile</h1>
+					<h2>Username: {user.username}</h2>
+					<h3>Email: {user.email}</h3>
+					<h4>Phone: {user.phone_number}</h4>
+					<button onClick={signOut}>Sign out</button>
+				</main>
+			)}
+		</Authenticator>
 	);
-}
+};
 
 const containerStyle = {
 	width: 400,
 	margin: "20px auto",
 };
-export default withAuthenticator(Profile);
-
-
-// // import { Amplify } from 'aws-amplify';
-// import '@aws-amplify/ui-react/styles.css';
-
-// import awsExports from './aws-exports';
-// Amplify.configure(awsExports);
-
-// export default function App() {
-//   return (
-    
-//   );
-// }
+export default Profile;
